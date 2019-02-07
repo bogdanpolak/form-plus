@@ -6,7 +6,7 @@ uses
   Plus.Vcl.Form in 'Plus.Vcl.Form.pas',
   Plus.Vcl.Action in 'Plus.Vcl.Action.pas',
   Plus.Vcl.ActionGuiBuilder in 'Plus.Vcl.ActionGuiBuilder.pas',
-  Plus.Vcl.Frame in 'Plus.Vcl.Frame.pas' {FrameConsole: TFrame},
+  Plus.Vcl.Frame in 'Plus.Vcl.Frame.pas',
   Frame.FirstOne in 'Frame.FirstOne.pas' {Frame1: TFrame};
 
 {$R *.res}

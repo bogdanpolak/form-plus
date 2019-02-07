@@ -31,6 +31,8 @@ procedure TForm1.Button2Click(Sender: TObject);
 var
   grbx: TGroupBox;
 begin
+  // OnButton2Click:
+  // Add to Frame.FirstOne type TFrame = Plus.Vcl.Frame.TPlusFrame;
   grbx := TGroupBox.Create(GroupBox2);
   with grbx do
   begin
@@ -46,10 +48,10 @@ begin
     Align := alClient;
     AlignWithMargins := True;
     Parent := grbx;
-    OnFrameClose := procedure(Frame: TFrame)
+    {OnFrameClose := procedure(Frame: TFrame)
       begin
         Frame.Owner.Free;
-      end;
+      end;}
   end;
 end;
 

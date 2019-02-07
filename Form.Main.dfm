@@ -1,20 +1,18 @@
 object Form1: TForm1
   Left = 0
   Top = 0
-  Caption = 'Form1'
-  ClientHeight = 350
-  ClientWidth = 603
+  ClientHeight = 445
+  ClientWidth = 630
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
   Font.Color = clWindowText
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  OnCreate = FormCreate
+  OldCreateOrder = True
   DesignSize = (
-    603
-    350)
+    630
+    445)
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -22,13 +20,10 @@ object Form1: TForm1
     Left = 3
     Top = 3
     Width = 177
-    Height = 344
+    Height = 439
     Align = alLeft
     Caption = 'GroupBox1'
     TabOrder = 0
-    ExplicitLeft = 8
-    ExplicitTop = 8
-    ExplicitHeight = 219
   end
   object Button1: TButton
     Left = 191
@@ -42,7 +37,7 @@ object Form1: TForm1
     Left = 191
     Top = 39
     Width = 218
-    Height = 303
+    Height = 547
     Anchors = [akLeft, akTop, akBottom]
     Caption = 'GroupBox2'
     TabOrder = 2
@@ -56,9 +51,6 @@ object Form1: TForm1
       Caption = 'Button2'
       TabOrder = 0
       OnClick = Button2Click
-      ExplicitLeft = 72
-      ExplicitTop = 136
-      ExplicitWidth = 75
     end
   end
 end
