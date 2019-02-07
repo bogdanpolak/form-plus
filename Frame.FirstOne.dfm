@@ -15,13 +15,13 @@ object Frame1: TFrame1
     Left = 3
     Top = 3
     Width = 314
-    Height = 118
+    Height = 110
     Align = alTop
     Caption = ' '
     TabOrder = 0
     DesignSize = (
       314
-      118)
+      110)
     object Shape1: TShape
       AlignWithMargins = True
       Left = 11
@@ -33,7 +33,7 @@ object Frame1: TFrame1
       Margins.Right = 10
       Align = alTop
       Brush.Color = clMoneyGreen
-      Pen.Color = clGreen
+      Pen.Color = clMedGray
       Pen.Width = 2
       Shape = stRoundRect
       OnMouseUp = Shape1MouseUp
@@ -43,23 +43,23 @@ object Frame1: TFrame1
       Left = 4
       Top = 50
       Width = 306
-      Height = 24
+      Height = 19
       Margins.Top = 6
       Align = alTop
       Alignment = taCenter
       Caption = 'Label1'
       Font.Charset = DEFAULT_CHARSET
       Font.Color = clWindowText
-      Font.Height = -20
+      Font.Height = -16
       Font.Name = 'Tahoma'
       Font.Style = []
       ParentFont = False
       WordWrap = True
-      ExplicitWidth = 59
+      ExplicitWidth = 46
     end
     object btnClose: TButton
       Left = 96
-      Top = 80
+      Top = 75
       Width = 129
       Height = 25
       Anchors = [akTop]

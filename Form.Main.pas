@@ -48,11 +48,12 @@ begin
     Align := alClient;
     AlignWithMargins := True;
     Parent := grbx;
-    {OnFrameClose := procedure(Frame: TFrame)
+    FramePlus.OnFrameClose := procedure(Frame: TFrame)
       begin
         Frame.Owner.Free;
-      end;}
+      end;
   end;
+  grbx.Height := (grbx.Controls[0] as TFrame1).Panel1.Height + 32;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);

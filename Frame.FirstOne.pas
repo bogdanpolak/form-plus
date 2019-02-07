@@ -10,20 +10,20 @@ uses
   Plus.Vcl.Frame;
 
 type
-  TFrame = Plus.Vcl.Frame.TPlusFrame;
-
   TFrame1 = class(TFrame)
     Panel1: TPanel;
     Shape1: TShape;
     Label1: TLabel;
     btnClose: TButton;
     procedure btnCloseClick(Sender: TObject);
-    procedure Shape1MouseUp(Sender: TObject; Button: TMouseButton; Shift:
-        TShiftState; X, Y: Integer);
+    procedure Shape1MouseUp(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
-    { Private declarations }
+    ColorIndex: Integer;
+    ColorArray: array of TColor;
   public
-    { Public declarations }
+    FramePlus: TPlusFrameComponent;
+    constructor Create(AOwner: TComponent); override;
   end;
 
 implementation
@@ -32,14 +32,27 @@ implementation
 
 procedure TFrame1.btnCloseClick(Sender: TObject);
 begin
-  // CloseFrame;
+  FramePlus.CloseFrame;
 end;
 
-procedure TFrame1.Shape1MouseUp(Sender: TObject; Button: TMouseButton; Shift:
-    TShiftState; X, Y: Integer);
+constructor TFrame1.Create(AOwner: TComponent);
 begin
-  Label1.Tag := Label1.Tag + 1;
-  Label1.Caption := Label1.Tag.ToString;
+  inherited;
+  FramePlus := TPlusFrameComponent.Create(Self);
+  ColorArray := [TColor($fef2c0),TColor($93ce55),TColor($d876e3)];
+  Shape1.Brush.Color := ColorArray[ColorIndex];
+  FramePlus.OnFrameIdle := procedure(Sender: TObject)
+    begin
+      Label1.Tag := Label1.Tag + 1;
+      Label1.Caption := Label1.Tag.ToString;
+    end;
+end;
+
+procedure TFrame1.Shape1MouseUp(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  ColorIndex :=  (ColorIndex+1) mod Length(ColorArray);
+  Shape1.Brush.Color := ColorArray[ColorIndex];
 end;
 
 end.
