@@ -4,6 +4,7 @@ interface
 
 uses
   System.Classes,
+  System.SysUtils,
   Vcl.ExtCtrls,
   Vcl.AppEvnts,
   Vcl.Forms;
@@ -11,24 +12,26 @@ uses
 type
   TFormPlus = class(TForm)
   private
-    FFirstTime: boolean;
+    FFirstTimeIdle: boolean;
     FApplicationEvents: Vcl.AppEvnts.TApplicationEvents;
+    FOnFormReady: TProc<TObject>;
+    FOnFormIdle: TProc<TObject>;
     procedure OnApplicationIdle(Sender: TObject; var Done: Boolean);
-  protected
-    procedure FormReady; virtual; abstract;
-    procedure FormIdle; virtual; abstract;
+    procedure SetOnFormIdle(const Value: TProc<TObject>);
+    procedure SetOnFormReady(const Value: TProc<TObject>);
   public
     constructor Create (Owner: TComponent); override;
+    property OnFormReady: TProc<TObject> read FOnFormReady write SetOnFormReady;
+    property OnFormIdle: TProc<TObject> read FOnFormIdle write SetOnFormIdle;
   end;
 
 implementation
 
-{ TFormWithReadyEvent }
 
 constructor TFormPlus.Create(Owner: TComponent);
 begin
   inherited;
-  FFirstTime := True;
+  FFirstTimeIdle := True;
   FApplicationEvents := TApplicationEvents.Create(Self);
   FApplicationEvents.OnIdle := OnApplicationIdle;
 end;
@@ -36,13 +39,25 @@ end;
 procedure TFormPlus.OnApplicationIdle(Sender: TObject; var Done: Boolean);
 begin
   try
-    if FFirstTime then
-      FormReady;
-    FormIdle();
+    if FFirstTimeIdle then
+      if Assigned(OnFormReady) then
+        OnFormReady(Self);
+    if Assigned(OnFormIdle) then
+      OnFormIdle(Self);
   finally
-    FFirstTime := False;
+    FFirstTimeIdle := False;
     Done := True;
   end;
+end;
+
+procedure TFormPlus.SetOnFormIdle(const Value: TProc<TObject>);
+begin
+  FOnFormIdle := Value;
+end;
+
+procedure TFormPlus.SetOnFormReady(const Value: TProc<TObject>);
+begin
+  FOnFormReady := Value;
 end;
 
 end.
