@@ -4,23 +4,17 @@ interface
 
 uses
   Winapi.Windows, Winapi.Messages,
-  System.SysUtils, System.Variants, System.Classes,
+  System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Plus.Vcl.Action, System.Actions, Vcl.ActnList;
+  Vcl.ActnList;
 
 type
-  TMyAction = class(TPlusAction)
-  public
-    constructor Create(AOwner: TComponent); override;
-  end;
-
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
     Button1: TButton;
     ActionList1: TActionList;
     procedure FormCreate(Sender: TObject);
   private
-    actMyAction: TMyAction;
   public
   end;
 
@@ -33,8 +27,7 @@ implementation
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  actMyAction := TMyAction.Create(Self);
-  Button1.Action := actMyAction;
+  // x
 end;
 
 // -------------------------------------------------------------------
@@ -69,6 +62,12 @@ end;
 // -------------------------------------------------------------------
 // Sample: TMyAction
 // -------------------------------------------------------------------
+(*
+type
+  TMyAction = class(TPlusAction)
+  public
+    constructor Create(AOwner: TComponent); override;
+  end;
 
 var
   FIdleCounter: integer;
@@ -86,5 +85,8 @@ begin
       inc(FIdleCounter)
     end
 end;
+*)
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
 
 end.
