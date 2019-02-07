@@ -30,8 +30,4 @@ object Form1: TForm1
     Caption = 'Button1'
     TabOrder = 1
   end
-  object ActionList1: TActionList
-    Left = 232
-    Top = 120
-  end
 end

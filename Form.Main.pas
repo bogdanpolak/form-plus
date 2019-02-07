@@ -12,7 +12,6 @@ type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
     Button1: TButton;
-    ActionList1: TActionList;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -63,28 +62,52 @@ end;
 // Sample: TMyAction
 // -------------------------------------------------------------------
 (*
-type
+  type
   TMyAction = class(TPlusAction)
   public
-    constructor Create(AOwner: TComponent); override;
+  constructor Create(AOwner: TComponent); override;
   end;
 
-var
+  var
   FIdleCounter: integer;
 
-constructor TMyAction.Create(AOwner: TComponent);
-begin
+  constructor TMyAction.Create(AOwner: TComponent);
+  begin
   inherited;
   Caption := 'Moja super akcja';
   OnExecuteAn := procedure(Action: TAction; Sender: TObject)
-    begin
-      Caption := 'Klikniêto! (Idle counter='+FIdleCounter.ToString+')';
-    end;
+  begin
+  Caption := 'Klikniêto! (Idle counter='+FIdleCounter.ToString+')';
+  end;
   OnUpdateAn := procedure(Action: TAction; Sender: TObject)
+  begin
+  inc(FIdleCounter)
+  end
+  end;
+*)
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+// Sample: TActionGuiBuilder
+// -------------------------------------------------------------------
+(*
+  ActionGuiBuilder := TActionGuiBuilder.Create(Self);
+  ActionGuiBuilder.AddActions(ActionList1);
+  actAction10 := TPlusAction.Create(Self);
+  actAction10.Caption := '* Action 10 *';
+  actAction10.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
     begin
-      inc(FIdleCounter)
-    end
-end;
+      Self.Caption := 'Action 10 Executed';
+    end;
+  actAction11 := TPlusAction.Create(Self);
+  actAction11.Caption := '* Action 11 *';
+  actAction11.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
+    begin
+      Self.Caption := 'Action 11 Executed';
+    end;
+  ActionGuiBuilder.AddActions([actAction10,actAction11]);
+  ActionGuiBuilder.BuildButtons(GroupBox1);
 *)
 // -------------------------------------------------------------------
 // -------------------------------------------------------------------
