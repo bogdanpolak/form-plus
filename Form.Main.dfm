@@ -33,5 +33,17 @@ object Form1: TForm1
   object ActionList1: TActionList
     Left = 232
     Top = 120
+    object Action1: TAction
+      Caption = 'Action1'
+      OnExecute = Action1Execute
+    end
+    object Action2: TAction
+      Caption = 'Action2'
+      OnExecute = Action2Execute
+    end
+    object Action3: TAction
+      Caption = 'Action3'
+      OnExecute = Action3Execute
+    end
   end
 end
