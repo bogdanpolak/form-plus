@@ -6,12 +6,15 @@ uses
   Winapi.Windows, Winapi.Messages,
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Vcl.ActnList;
+  Vcl.ActnList, Frame.FirstOne;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
     Button1: TButton;
+    GroupBox2: TGroupBox;
+    Button2: TButton;
+    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -24,9 +27,35 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.Button2Click(Sender: TObject);
+var
+  grbx: TGroupBox;
+begin
+  grbx := TGroupBox.Create(GroupBox2);
+  with grbx do
+  begin
+    Top := 9999;
+    Align := alTop;
+    AlignWithMargins := True;
+    Caption := 'Grupa z ramk¹';
+    Parent := GroupBox2;
+    Height := 180;
+  end;
+  with TFrame1.Create(grbx) do
+  begin
+    Align := alClient;
+    AlignWithMargins := True;
+    Parent := grbx;
+    OnFrameClose := procedure(Frame: TFrame)
+      begin
+        Frame.Owner.Free;
+      end;
+  end;
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
-  // x
+  ReportMemoryLeaksOnShutdown := True;
 end;
 
 // -------------------------------------------------------------------
@@ -97,15 +126,15 @@ end;
   actAction10 := TPlusAction.Create(Self);
   actAction10.Caption := '* Action 10 *';
   actAction10.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
-    begin
-      Self.Caption := 'Action 10 Executed';
-    end;
+  begin
+  Self.Caption := 'Action 10 Executed';
+  end;
   actAction11 := TPlusAction.Create(Self);
   actAction11.Caption := '* Action 11 *';
   actAction11.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
-    begin
-      Self.Caption := 'Action 11 Executed';
-    end;
+  begin
+  Self.Caption := 'Action 11 Executed';
+  end;
   ActionGuiBuilder.AddActions([actAction10,actAction11]);
   ActionGuiBuilder.BuildButtons(GroupBox1);
 *)
