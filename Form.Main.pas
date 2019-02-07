@@ -6,24 +6,14 @@ uses
   Winapi.Windows, Winapi.Messages,
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Vcl.ActnList, Plus.Vcl.ActionGuiBuilder, Plus.Vcl.Action;
+  Vcl.ActnList;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
     Button1: TButton;
-    ActionList1: TActionList;
-    Action1: TAction;
-    Action2: TAction;
-    Action3: TAction;
-    procedure Action1Execute(Sender: TObject);
-    procedure Action2Execute(Sender: TObject);
-    procedure Action3Execute(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    ActionGuiBuilder: TActionGuiBuilder;
-    actAction10: TPlusAction;
-    actAction11: TPlusAction;
   public
   end;
 
@@ -34,40 +24,9 @@ implementation
 
 {$R *.dfm}
 
-procedure TForm1.Action1Execute(Sender: TObject);
-begin
-  Caption := 'Action 1 Executed';
-end;
-
-procedure TForm1.Action2Execute(Sender: TObject);
-begin
-  Caption := 'Action 2 Executed';
-end;
-
-procedure TForm1.Action3Execute(Sender: TObject);
-begin
-  Caption := 'Action 3 Executed';
-end;
-
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   // x
-  ActionGuiBuilder := TActionGuiBuilder.Create(Self);
-  ActionGuiBuilder.AddActions(ActionList1);
-  actAction10 := TPlusAction.Create(Self);
-  actAction10.Caption := '* Action 10 *';
-  actAction10.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
-    begin
-      Self.Caption := 'Action 10 Executed';
-    end;
-  actAction11 := TPlusAction.Create(Self);
-  actAction11.Caption := '* Action 11 *';
-  actAction11.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
-    begin
-      Self.Caption := 'Action 11 Executed';
-    end;
-  ActionGuiBuilder.AddActions([actAction10,actAction11]);
-  ActionGuiBuilder.BuildButtons(GroupBox1);
 end;
 
 // -------------------------------------------------------------------
@@ -125,6 +84,30 @@ end;
   inc(FIdleCounter)
   end
   end;
+*)
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+// Sample: TActionGuiBuilder
+// -------------------------------------------------------------------
+(*
+  ActionGuiBuilder := TActionGuiBuilder.Create(Self);
+  ActionGuiBuilder.AddActions(ActionList1);
+  actAction10 := TPlusAction.Create(Self);
+  actAction10.Caption := '* Action 10 *';
+  actAction10.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
+    begin
+      Self.Caption := 'Action 10 Executed';
+    end;
+  actAction11 := TPlusAction.Create(Self);
+  actAction11.Caption := '* Action 11 *';
+  actAction11.OnExecuteAn := procedure(Action: TAction; Sender: TObject)
+    begin
+      Self.Caption := 'Action 11 Executed';
+    end;
+  ActionGuiBuilder.AddActions([actAction10,actAction11]);
+  ActionGuiBuilder.BuildButtons(GroupBox1);
 *)
 // -------------------------------------------------------------------
 // -------------------------------------------------------------------
