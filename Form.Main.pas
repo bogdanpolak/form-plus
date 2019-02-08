@@ -7,13 +7,18 @@ uses
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.ActnList,
-  Frame.FirstOne;
+  Frame.FirstOne, Plus.Vcl.Timer;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
+    btnRunTimer: TButton;
+    btnOnceRunTimer: TButton;
+    procedure btnOnceRunTimerClick(Sender: TObject);
+    procedure btnRunTimerClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
+    FTimer1: TPlusTimer;
   public
   end;
 
@@ -23,6 +28,37 @@ var
 implementation
 
 {$R *.dfm}
+
+procedure TForm1.btnOnceRunTimerClick(Sender: TObject);
+begin
+  // btnOnceRunTimer:
+  TPlusTimer.RunOnce(Self, 2000,
+    procedure
+    begin
+      btnOnceRunTimer.Caption := 'Pierwsze wywy³anie';
+      TPlusTimer.RunOnce(Self, 2000,
+        procedure
+        begin
+          btnOnceRunTimer.Caption := 'Drugie wywy³anie';
+          TPlusTimer.RunOnce(Self, 2000,
+            procedure
+            begin
+              btnOnceRunTimer.Caption := 'Koniec ...'
+            end);
+        end);
+    end);
+end;
+
+procedure TForm1.btnRunTimerClick(Sender: TObject);
+begin
+  // btnRunTimer:
+  TPlusTimer.Run(Self, 200,
+    procedure
+    begin
+      btnRunTimer.Tag := btnRunTimer.Tag + 1;
+      btnRunTimer.Caption := btnRunTimer.Tag.ToString;
+    end);
+end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin

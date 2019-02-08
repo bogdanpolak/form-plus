@@ -7,7 +7,8 @@ uses
   Plus.Vcl.Action in 'Plus.Vcl.Action.pas',
   Plus.Vcl.ActionGuiBuilder in 'Plus.Vcl.ActionGuiBuilder.pas',
   Plus.Vcl.Frame in 'Plus.Vcl.Frame.pas',
-  Frame.FirstOne in 'Frame.FirstOne.pas' {Frame1: TFrame};
+  Frame.FirstOne in 'Frame.FirstOne.pas' {Frame1: TFrame},
+  Plus.Vcl.Timer in 'Plus.Vcl.Timer.pas';
 
 {$R *.res}
 

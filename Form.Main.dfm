@@ -22,4 +22,22 @@ object Form1: TForm1
     Caption = 'GroupBox1'
     TabOrder = 0
   end
+  object btnRunTimer: TButton
+    Left = 200
+    Top = 8
+    Width = 153
+    Height = 25
+    Caption = 'btnRunTimer'
+    TabOrder = 1
+    OnClick = btnRunTimerClick
+  end
+  object btnOnceRunTimer: TButton
+    Left = 200
+    Top = 39
+    Width = 153
+    Height = 25
+    Caption = 'btnOnceRunTimer'
+    TabOrder = 2
+    OnClick = btnOnceRunTimerClick
+  end
 end
