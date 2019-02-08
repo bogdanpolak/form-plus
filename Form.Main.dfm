@@ -1,6 +1,7 @@
 object Form1: TForm1
   Left = 0
   Top = 0
+  Caption = 'Form1'
   ClientHeight = 445
   ClientWidth = 630
   Color = clBtnFace
@@ -10,6 +11,7 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = True
+  OnCreate = FormCreate
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -21,21 +23,5 @@ object Form1: TForm1
     Align = alLeft
     Caption = 'GroupBox1'
     TabOrder = 0
-  end
-  object btnRunTimer: TButton
-    Left = 200
-    Top = 8
-    Width = 153
-    Height = 25
-    Caption = 'btnRunTimer'
-    TabOrder = 1
-  end
-  object btnOnceRunTimer: TButton
-    Left = 200
-    Top = 39
-    Width = 153
-    Height = 25
-    Caption = 'btnOnceRunTimer'
-    TabOrder = 2
   end
 end

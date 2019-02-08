@@ -6,14 +6,12 @@ uses
   Winapi.Windows, Winapi.Messages,
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Vcl.ActnList,
+  Vcl.ActnList,  Vcl.ComCtrls,
   Frame.FirstOne;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
-    btnRunTimer: TButton;
-    btnOnceRunTimer: TButton;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -192,5 +190,18 @@ end;
   ActionGuiBuilder.AddActions([actAction10,actAction11]);
   ActionGuiBuilder.BuildButtons(GroupBox1);
 *)
+
+
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+// Sample: TTabSheetFactory
+// -------------------------------------------------------------------
+(*
+  TabSheetFactory := TTabSheetFactory.Create(Self);
+  TabSheetFactory.PageControl := PageControl1;
+  TabSheetFactory.CreateNewWithFrame<TFrameWithLabel>('Ramka z labelk¹');
+  TabSheetFactory.CreateNewWithFrame<TFrameWithStringGrid>('Ramka z siatk¹');
+*)
+
 
 end.
