@@ -28,32 +28,20 @@ implementation
 {$R *.dfm}
 
 procedure TForm1.Button2Click(Sender: TObject);
-var
-  grbx: TGroupBox;
 begin
-  // OnButton2Click:
-  // Add to Frame.FirstOne type TFrame = Plus.Vcl.Frame.TPlusFrame;
-  grbx := TGroupBox.Create(GroupBox2);
-  with grbx do
+  with TFrame1.Create(Self) do
   begin
     Top := 9999;
     Align := alTop;
     AlignWithMargins := True;
-    Caption := 'Grupa z ramk¹';
+    Name := 'Frame' + random(1000).ToString;
     Parent := GroupBox2;
-    Height := 180;
-  end;
-  with TFrame1.Create(grbx) do
-  begin
-    Align := alClient;
-    AlignWithMargins := True;
-    Parent := grbx;
+    Height := Panel1.Height + 3;
     FramePlus.OnFrameClose := procedure(Frame: TFrame)
       begin
         Frame.Owner.Free;
       end;
   end;
-  grbx.Height := (grbx.Controls[0] as TFrame1).Panel1.Height + 32;
 end;
 
 procedure TForm1.FormCreate(Sender: TObject);
