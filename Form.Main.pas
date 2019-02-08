@@ -12,6 +12,8 @@ uses
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
+    btnRunTimer: TButton;
+    btnOnceRunTimer: TButton;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -56,6 +58,38 @@ end;
   btn.Caption := btn.Tag.ToString;
   end;
   end;
+*)
+
+
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+// Sample: TTimerPlus
+// -------------------------------------------------------------------
+(*
+  // btnOnceRunTimer:
+  TPlusTimer.RunOnce(Self, 2000,
+  procedure
+  begin
+  btnOnceRunTimer.Caption := 'Pierwsze wywy³anie';
+  TPlusTimer.RunOnce(Self, 2000,
+  procedure
+  begin
+  btnOnceRunTimer.Caption := 'Drugie wywy³anie';
+  TPlusTimer.RunOnce(Self, 2000,
+  procedure
+  begin
+  btnOnceRunTimer.Caption := 'Koniec ...'
+  end);
+  end);
+  end);
+  // btnRunTimer:
+  TPlusTimer.Run(Self, 200,
+  procedure
+  begin
+  btnRunTimer.Tag := btnRunTimer.Tag + 1;
+  btnRunTimer.Caption := btnRunTimer.Tag.ToString;
+  end);
+  // Brakuje demo dla TStoper (do u¿ycia w przyk³adzie TFramePlusExtension)
 *)
 
 
