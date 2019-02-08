@@ -7,18 +7,15 @@ uses
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.ActnList,
-  Frame.FirstOne, Plus.Vcl.Timer;
+  Frame.FirstOne;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
     btnRunTimer: TButton;
     btnOnceRunTimer: TButton;
-    procedure btnOnceRunTimerClick(Sender: TObject);
-    procedure btnRunTimerClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
-    FTimer1: TPlusTimer;
   public
   end;
 
@@ -28,37 +25,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TForm1.btnOnceRunTimerClick(Sender: TObject);
-begin
-  // btnOnceRunTimer:
-  TPlusTimer.RunOnce(Self, 2000,
-    procedure
-    begin
-      btnOnceRunTimer.Caption := 'Pierwsze wywy³anie';
-      TPlusTimer.RunOnce(Self, 2000,
-        procedure
-        begin
-          btnOnceRunTimer.Caption := 'Drugie wywy³anie';
-          TPlusTimer.RunOnce(Self, 2000,
-            procedure
-            begin
-              btnOnceRunTimer.Caption := 'Koniec ...'
-            end);
-        end);
-    end);
-end;
-
-procedure TForm1.btnRunTimerClick(Sender: TObject);
-begin
-  // btnRunTimer:
-  TPlusTimer.Run(Self, 200,
-    procedure
-    begin
-      btnRunTimer.Tag := btnRunTimer.Tag + 1;
-      btnRunTimer.Caption := btnRunTimer.Tag.ToString;
-    end);
-end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -92,6 +58,38 @@ end;
   btn.Caption := btn.Tag.ToString;
   end;
   end;
+*)
+
+
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+// Sample: TTimerPlus
+// -------------------------------------------------------------------
+(*
+  // btnOnceRunTimer:
+  TPlusTimer.RunOnce(Self, 2000,
+  procedure
+  begin
+  btnOnceRunTimer.Caption := 'Pierwsze wywy³anie';
+  TPlusTimer.RunOnce(Self, 2000,
+  procedure
+  begin
+  btnOnceRunTimer.Caption := 'Drugie wywy³anie';
+  TPlusTimer.RunOnce(Self, 2000,
+  procedure
+  begin
+  btnOnceRunTimer.Caption := 'Koniec ...'
+  end);
+  end);
+  end);
+  // btnRunTimer:
+  TPlusTimer.Run(Self, 200,
+  procedure
+  begin
+  btnRunTimer.Tag := btnRunTimer.Tag + 1;
+  btnRunTimer.Caption := btnRunTimer.Tag.ToString;
+  end);
+  // Brakuje demo dla TStoper (do u¿ycia w przyk³adzie TFramePlusExtension)
 *)
 
 

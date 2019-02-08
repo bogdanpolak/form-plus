@@ -29,7 +29,6 @@ object Form1: TForm1
     Height = 25
     Caption = 'btnRunTimer'
     TabOrder = 1
-    OnClick = btnRunTimerClick
   end
   object btnOnceRunTimer: TButton
     Left = 200
@@ -38,6 +37,5 @@ object Form1: TForm1
     Height = 25
     Caption = 'btnOnceRunTimer'
     TabOrder = 2
-    OnClick = btnOnceRunTimerClick
   end
 end
