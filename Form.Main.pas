@@ -7,15 +7,20 @@ uses
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
   Vcl.ActnList,
-  Frame.FirstOne;
+  Frame.FirstOne, Vcl.ComCtrls, Frame.WithLabel, Frame.WithStringGrid,
+  Plus.Vcl.PageControl;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
-    btnRunTimer: TButton;
-    btnOnceRunTimer: TButton;
+    Button1: TButton;
+    Button2: TButton;
+    PageControl1: TPageControl;
+    procedure Button1Click(Sender: TObject);
+    procedure Button2Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
   private
+    TabSheetFactory: TTabSheetFactory;
   public
   end;
 
@@ -26,9 +31,21 @@ implementation
 
 {$R *.dfm}
 
+procedure TForm1.Button1Click(Sender: TObject);
+begin
+  TabSheetFactory.CreateNewWithFrame<TFrameWithLabel>('Ramka z labelk¹');
+end;
+
+procedure TForm1.Button2Click(Sender: TObject);
+begin
+  TabSheetFactory.CreateNewWithFrame<TFrameWithStringGrid>('Ramka z siatk¹');
+end;
+
 procedure TForm1.FormCreate(Sender: TObject);
 begin
   ReportMemoryLeaksOnShutdown := True;
+  TabSheetFactory := TTabSheetFactory.Create(Self);
+  TabSheetFactory.PageControl := PageControl1;
 end;
 
 
