@@ -88,7 +88,6 @@ object Frame1: TFrame1
         Align = alClient
         Caption = 'btnClose'
         TabOrder = 0
-        OnClick = btnCloseClick
       end
       object Button1: TButton
         AlignWithMargins = True

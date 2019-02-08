@@ -6,15 +6,15 @@ uses
   Winapi.Windows, Winapi.Messages,
   System.SysUtils, System.Variants, System.Classes, System.Actions,
   Vcl.Graphics, Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.StdCtrls,
-  Vcl.ActnList, Frame.FirstOne;
+  Vcl.ActnList,
+  Frame.FirstOne;
 
 type
   TForm1 = class(TForm)
     GroupBox1: TGroupBox;
     Button1: TButton;
-    GroupBox2: TGroupBox;
-    Button2: TButton;
-    procedure Button2Click(Sender: TObject);
+    grbxFrameDemo: TGroupBox;
+    btnAddFrame: TButton;
     procedure FormCreate(Sender: TObject);
   private
   public
@@ -26,23 +26,6 @@ var
 implementation
 
 {$R *.dfm}
-
-procedure TForm1.Button2Click(Sender: TObject);
-begin
-  with TFrame1.Create(Self) do
-  begin
-    Top := 9999;
-    Align := alTop;
-    AlignWithMargins := True;
-    Name := 'Frame' + random(1000).ToString;
-    Parent := GroupBox2;
-    Height := Panel1.Height + 3;
-    FramePlus.OnFrameClose := procedure(Frame: TFrame)
-      begin
-        Frame.Owner.Free;
-      end;
-  end;
-end;
 
 procedure TForm1.FormCreate(Sender: TObject);
 begin
@@ -131,5 +114,38 @@ end;
 *)
 // -------------------------------------------------------------------
 // -------------------------------------------------------------------
+
+// -------------------------------------------------------------------
+// Sample: TFramePlusExtension
+// -------------------------------------------------------------------
+(*
+  // btnAddFrameClick:
+  with TFrame1.Create(grbxFrameDemo) do
+  begin
+  Top := 9999;
+  Align := alTop;
+  AlignWithMargins := True;
+  Name := 'Frame'+random(1000).ToString;
+  Parent := grbxFrameDemo;
+  Height := Panel1.Height + 3;
+  end;
+  // btnAddFrameClick (TFramePlusExtension):
+  FramePlus.OnFrameClose := procedure(Frame: TFrame)
+  begin
+  Frame.Owner.Free;
+  end;
+  // Frame1.OnCreate:
+  FramePlus := TPlusFrameExtension.Create(Self);
+  FramePlus.OnFrameIdle := procedure(Sender: TObject)
+  begin
+  Button1.Tag := Button1.Tag + 1;
+  Button1.Caption := Button1.Tag.ToString;
+  end;
+  // Frame1.btnCloseClick:
+  FramePlus.CloseFrame
+*)
+// -------------------------------------------------------------------
+// -------------------------------------------------------------------
+
 
 end.

@@ -33,24 +33,23 @@ object Form1: TForm1
     Caption = 'Button1'
     TabOrder = 1
   end
-  object GroupBox2: TGroupBox
-    Left = 191
+  object grbxFrameDemo: TGroupBox
+    Left = 186
     Top = 39
     Width = 218
     Height = 547
     Anchors = [akLeft, akTop, akBottom]
-    Caption = 'GroupBox2'
+    Caption = 'grbxFrameDemo'
     TabOrder = 2
-    object Button2: TButton
+    object btnAddFrame: TButton
       AlignWithMargins = True
       Left = 5
       Top = 18
       Width = 208
       Height = 25
       Align = alTop
-      Caption = 'Button2'
+      Caption = 'btnAddFrame'
       TabOrder = 0
-      OnClick = Button2Click
     end
   end
 end

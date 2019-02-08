@@ -9,7 +9,7 @@ uses
   Vcl.Forms;
 
 type
-  TPlusFrameExtention = class(TComponent)
+  TPlusFrameExtension = class(TComponent)
   private
     FOnFrameClose: TProc<TFrame>;
     FOnFrameReady: TProc<TObject>;
@@ -38,7 +38,7 @@ implementation
 uses
   Vcl.Controls;
 
-procedure TPlusFrameExtention.CloseFrame;
+procedure TPlusFrameExtension.CloseFrame;
 begin
   Frame.Visible := False;
   // TODO: Add timer with interval 1ms add (OnTimer - once)
@@ -50,9 +50,10 @@ begin
     OnFrameClose(Frame);
 end;
 
-constructor TPlusFrameExtention.Create(Owner: TComponent);
+constructor TPlusFrameExtension.Create(Owner: TComponent);
 begin
   inherited;
+  // TODO: Use a Guard and proper exception class
   if (Owner = nil) or not(Owner is TFrame) then
     raise Exception.Create('Owner has to be TFrame');
   Frame := Owner as TFrame;
@@ -61,7 +62,7 @@ begin
   FApplicationEvents.OnIdle := EventOnFrameIdle;
 end;
 
-procedure TPlusFrameExtention.EventOnFrameIdle(Sender: TObject;
+procedure TPlusFrameExtension.EventOnFrameIdle(Sender: TObject;
   var Done: Boolean);
 begin
   try
@@ -75,22 +76,22 @@ begin
   end;
 end;
 
-procedure TPlusFrameExtention.SetFrame(const Value: TFrame);
+procedure TPlusFrameExtension.SetFrame(const Value: TFrame);
 begin
   FFrame := Value;
 end;
 
-procedure TPlusFrameExtention.SetOnFrameClose(const Value: TProc<TFrame>);
+procedure TPlusFrameExtension.SetOnFrameClose(const Value: TProc<TFrame>);
 begin
   FOnFrameClose := Value;
 end;
 
-procedure TPlusFrameExtention.SetOnFrameIdle(const Value: TProc<TObject>);
+procedure TPlusFrameExtension.SetOnFrameIdle(const Value: TProc<TObject>);
 begin
   FOnFrameIdle := Value;
 end;
 
-procedure TPlusFrameExtention.SetOnFrameReady(const Value: TProc<TObject>);
+procedure TPlusFrameExtension.SetOnFrameReady(const Value: TProc<TObject>);
 begin
   FOnFrameReady := Value;
 end;
