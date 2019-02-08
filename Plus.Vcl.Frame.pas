@@ -41,6 +41,11 @@ uses
 procedure TPlusFrameExtention.CloseFrame;
 begin
   Frame.Visible := False;
+  // TODO: Add timer with interval 1ms add (OnTimer - once)
+  // * It could be dengerous to call OnFrameClose here immediately
+  // * In the implementation Owner (TFrame) is destroyed, but after
+  //   return from this method (CloseFrame) still can be manipulated !!!
+  // * To protect against this, call OnFrameClose even with minimal delay
   if Assigned(OnFrameClose) then
     OnFrameClose(Frame);
 end;
