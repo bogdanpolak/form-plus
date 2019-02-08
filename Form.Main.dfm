@@ -10,9 +10,6 @@ object Form1: TForm1
   Font.Name = 'Tahoma'
   Font.Style = []
   OldCreateOrder = True
-  DesignSize = (
-    630
-    445)
   PixelsPerInch = 96
   TextHeight = 13
   object GroupBox1: TGroupBox
@@ -24,32 +21,5 @@ object Form1: TForm1
     Align = alLeft
     Caption = 'GroupBox1'
     TabOrder = 0
-  end
-  object Button1: TButton
-    Left = 191
-    Top = 8
-    Width = 194
-    Height = 25
-    Caption = 'Button1'
-    TabOrder = 1
-  end
-  object grbxFrameDemo: TGroupBox
-    Left = 186
-    Top = 39
-    Width = 218
-    Height = 547
-    Anchors = [akLeft, akTop, akBottom]
-    Caption = 'grbxFrameDemo'
-    TabOrder = 2
-    object btnAddFrame: TButton
-      AlignWithMargins = True
-      Left = 5
-      Top = 18
-      Width = 208
-      Height = 25
-      Align = alTop
-      Caption = 'btnAddFrame'
-      TabOrder = 0
-    end
   end
 end
